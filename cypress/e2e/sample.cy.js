@@ -182,3 +182,24 @@ describe('Assigment 13 !! NOT COMPLETED !!', () => {
         .click()
     })
 })
+//skip assigment 14 so that there are no screeshot being made
+describe.skip('Assignment 14', () =>{
+    it('Use screesnshot command', ()=>{
+        cy.visit('https://www.saucedemo.com')
+        cy.get('[data-test="username"]')
+        .type('standard_user')
+        .should('have.value', 'standard_user')
+        cy.get('[data-test="password"]')
+        .type(password)
+        .should('have.value', password)
+        cy.get('[data-test="login-button"]')
+        .screenshot('loginButton') //screesnshot with specific name
+        .click()
+        cy.screenshot() //new
+        cy.url().should('includes','inventory')
+        cy.screenshot('screenshot with command log', {//screenshot with options 
+            capture: "runner" //runner captures entire browser viewport with cypress command log
+        })
+
+    })
+})
