@@ -1,0 +1,7 @@
+{
+    "_comment_" : "configuration file for javascript",
+    "include": [
+        "./node_modules/cypress",
+        "cypress/**/*.js"
+    ]
+}

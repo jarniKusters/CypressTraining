@@ -1,0 +1,6 @@
+{
+    "__comment1__": "Eslint is a plugin used for identifying and reporting patterns found in javascript code",
+    "extends": [
+        "plugin:cypress/recommended"
+    ]
+}
