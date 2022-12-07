@@ -211,6 +211,8 @@ describe('Assignment 15', () => { //only runs the test in the browser that is op
         })
     })
 })
-describe('Assignment 16', () => {
-    
+describe.only('Assignment 16 !!NOT COMPLETED!!', () => {
+    it('Visits the page', () => {
+        cy.visit('https://cvToolDemo-test.heroKuapp.com/users/sign_up')
+    })
 })
