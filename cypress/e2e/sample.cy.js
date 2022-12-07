@@ -150,7 +150,7 @@ describe('Assignment 10', () =>{
         .click()
     })
 })
-describe('Assigment 11', () => {
+describe('Assignment 11', () => {
     ;['standard_user', 'locked_out_user', 'problem_user', 'performance_glitch_user']
     .forEach((user) => {
         it('Logs in as: ' + user, ()=>{
@@ -158,7 +158,7 @@ describe('Assigment 11', () => {
         })
     })
 })
-describe('Assigment 12', () => {
+describe('Assignment 12', () => {
     before(() => {
         cy.login('standard_user', password)
     })
@@ -173,7 +173,7 @@ describe('Assigment 12', () => {
         .should('includes', 'inventory-item')
     })
 })
-describe('Assigment 13 !! NOT COMPLETED !!', () => {
+describe('Assignment 13 !! NOT COMPLETED !!', () => {
     it('Uses intercept', () =>{
         cy.intercept('GET', 'https://jsonpLaceholder.cypress.io/commands/1').as('comments')
         cy.visit('https://example.cypress.io/commands/aliasing')
@@ -203,11 +203,14 @@ describe.skip('Assignment 14', () =>{
 
     })
 })
-describe('Assigment 15', () => { //only runs the test in the browser that is opened
+describe('Assignment 15', () => { //only runs the test in the browser that is opened
     ;['electron', 'chrome', 'edge']
     .forEach((internetBrowser) => {
         it('Visits google with: ' + internetBrowser, {browser: internetBrowser}, () =>{
             cy.visit('https://www.google.be')
         })
     })
+})
+describe('Assignment 16', () => {
+    
 })
