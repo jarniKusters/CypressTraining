@@ -109,7 +109,7 @@ describe('Assignment 8', () => {
         .contains('Logout')
         .click()
     })
-    it('Assigment 8A' , () => {
+    it.skip('Assigment 8A' , () => {
         cy.get('#item_0_title_link > .inventory_item_name')
         .click()
         cy.get('button')
@@ -127,6 +127,11 @@ describe('Assignment 8', () => {
         .select('Name (Z to A)') //use .select to select the option
         cy.get(':nth-child(1) > .inventory_item_description')
         .should('not.contain', 'Sauce Labs Backpack')
+    })
+    it('Assigment 9', () => {
+        cy.log('Add it.only() and it.skip() to assigment 8')
+        //it.only() -> only executes that specific test
+        //it.skip() -> skips that specific test
     })
 
 })
