@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
+  videoCompression: false,
   chromeWebSecurity: false,
   e2e: {
     // We've imported your old cypress plugins here.
