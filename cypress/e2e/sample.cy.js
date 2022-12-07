@@ -1,3 +1,5 @@
+const password = 'secret_sauce'
+
 describe('my First Test', () => {
     it("Gets, types and asserts", () =>{
         cy.visit('https://example.cypress.io')
@@ -17,8 +19,8 @@ describe('Assignment 1', () =>{
         .type('standard_user')
         .should('have.value', 'standard_user')
         cy.get('[data-test="password"]')
-        .type('secret_sauce')
-        .should('have.value', 'secret_sauce')
+        .type(password)
+        .should('have.value', password)
         cy.get('[data-test="login-button"]')
         .click()
         cy.url().should('includes','inventory')
@@ -32,8 +34,8 @@ describe('Assignment 3', () =>{
         .type('standard_user')
         .should('have.value', 'standard_user')
         cy.get('[data-test="password"]')
-        .type('secret_sauce')
-        .should('have.value', 'secret_sauce')
+        .type(password)
+        .should('have.value', password)
         cy.contains('Login') //new
         .click()
         cy.contains('Sauce Labs') //new
@@ -47,8 +49,8 @@ describe('Assignment 4', () =>{
         .type('standard_user')
         .should('have.value', 'standard_user')
         cy.get('[data-test="password"]')
-        .type('secret_sauce')
-        .should('have.value', 'secret_sauce')
+        .type(password)
+        .should('have.value', password)
         cy.contains('Login')
         .click()
         //cy.contains('Login' , {timeout: 10000}) //new
@@ -64,8 +66,8 @@ describe('Assignment 5', () =>{
         .type('standard_user')
         .should('have.value', 'standard_user')
         cy.get('[data-test="password"]')
-        .type('secret_sauce')
-        .should('have.value', 'secret_sauce')
+        .type(password)
+        .should('have.value', password)
         cy.contains('Login')
         .click()
         cy.get(':nth-child(4) > .inventory_item_description')
@@ -85,21 +87,21 @@ describe('Assignment 6', () =>{
         .should('have.value', 'standard_user')
         cy.get('[data-test="password"]')
         //yielding the element into val
-        .type('secret_sauce')
+        .type(password)
         .invoke('val')
         .then(val =>{
-            expect(val).to.equal('secret_sauce')
+            expect(val).to.equal(password)
         })
     })
 })
 describe('Assignment 7', () =>{
     it('logs in with command', ()=>{
-        cy.login('standard_user', 'secret_sauce')
+        cy.login('standard_user', password)
     })
 })
 describe('Assignment 8', () => {
     beforeEach(() => {
-        cy.login('standard_user', 'secret_sauce')
+        cy.login('standard_user',password)
     })
     afterEach(() => {
         cy.get('#react-burger-menu-btn')
@@ -135,7 +137,7 @@ describe('Assignment 8', () => {
 
 })
 describe('Assignment 10', () =>{
-    it.only('Add 2 retries to the test when run in openMode',
+    it('Add 2 retries to the test when run in openMode',
     {
         retries:{
             runMode: 0,
@@ -143,8 +145,16 @@ describe('Assignment 10', () =>{
         },
     }, 
     ()=>{
-        cy.login('standard_user', 'secret_sauce')
+        cy.login('standard_user', password)
         cy.contains('Sauce Labs')
         .click()
+    })
+})
+describe.only('Assigment 11', () => {
+    ;['standard_user', 'locked_out_user', 'problem_user', 'performance_glitch_user']
+    .forEach((user) => {
+        it('Logs in as: ' + user, ()=>{
+            cy.login(user, password)
+        })
     })
 })
