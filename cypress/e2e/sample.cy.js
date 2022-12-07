@@ -11,7 +11,7 @@ describe('my First Test', () => {
     })
 })
 describe('Assignment 1', () =>{
-    it('logs in', ()=>{
+    it('Log in and check if link includes inventory', ()=>{
         cy.visit('https://www.saucedemo.com')
         cy.get('[data-test="username"]')
         .type('standard_user')
@@ -26,7 +26,7 @@ describe('Assignment 1', () =>{
     })
 })
 describe('Assignment 3', () =>{
-    it('logs in', ()=>{
+    it('make assertions', ()=>{
         cy.visit('https://www.saucedemo.com')
         cy.get('[data-test="username"]')
         .type('standard_user')
@@ -41,7 +41,7 @@ describe('Assignment 3', () =>{
     })
 })
 describe('Assignment 4', () =>{
-    it('logs in', ()=>{
+    it('Add timeout to assertion', ()=>{
         cy.visit('https://www.saucedemo.com')
         cy.get('[data-test="username"]')
         .type('standard_user')
@@ -58,7 +58,7 @@ describe('Assignment 4', () =>{
     })
 })
 describe('Assignment 5', () =>{
-    it('logs in', ()=>{
+    it('Check item description', ()=>{
         cy.visit('https://www.saucedemo.com')
         cy.get('[data-test="username"]')
         .type('standard_user')
@@ -78,7 +78,7 @@ describe('Assignment 5', () =>{
     })
 })
 describe('Assignment 6', () =>{
-    it('logs in', ()=>{
+    it('assertion with expect', ()=>{
         cy.visit('https://www.saucedemo.com')
         cy.get('[data-test="username"]')
         .type('standard_user')
@@ -93,11 +93,10 @@ describe('Assignment 6', () =>{
     })
 })
 describe('Assignment 7', () =>{
-    it('logs in', ()=>{
+    it('logs in with command', ()=>{
         cy.login('standard_user', 'secret_sauce')
     })
 })
-
 describe('Assignment 8', () => {
     beforeEach(() => {
         cy.login('standard_user', 'secret_sauce')
@@ -109,7 +108,7 @@ describe('Assignment 8', () => {
         .contains('Logout')
         .click()
     })
-    it.skip('Assigment 8A' , () => {
+    it('Add to cart and check cart' , () => {
         cy.get('#item_0_title_link > .inventory_item_name')
         .click()
         cy.get('button')
@@ -120,7 +119,7 @@ describe('Assignment 8', () => {
         cy.get('.cart_item')
         .contains('Sauce Labs Bike Light')
     })
-    it('Assigment 8B' , () => {
+    it('Filter and check if first item is different' , () => {
         cy.get(':nth-child(1) > .inventory_item_description')
         .contains('Sauce Labs Backpack')
         cy.get('.product_sort_container') 
@@ -134,4 +133,18 @@ describe('Assignment 8', () => {
         //it.skip() -> skips that specific test
     })
 
+})
+describe('Assignment 10', () =>{
+    it.only('Add 2 retries to the test when run in openMode',
+    {
+        retries:{
+            runMode: 0,
+            openMode: 2,
+        },
+    }, 
+    ()=>{
+        cy.login('standard_user', 'secret_sauce')
+        cy.contains('Sauce Labs')
+        .click()
+    })
 })
