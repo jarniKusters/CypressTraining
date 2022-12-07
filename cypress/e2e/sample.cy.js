@@ -173,3 +173,12 @@ describe('Assigment 12', () => {
         .should('includes', 'inventory-item')
     })
 })
+describe('Assigment 13 !! NOT COMPLETED !!', () => {
+    it('Uses intercept', () =>{
+        cy.intercept('GET', 'https://jsonpLaceholder.cypress.io/commands/1').as('comments')
+        cy.visit('https://example.cypress.io/commands/aliasing')
+        cy.get('button')
+        .contains('Get Comment')
+        .click()
+    })
+})
