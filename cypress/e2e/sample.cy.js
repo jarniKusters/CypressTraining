@@ -150,11 +150,26 @@ describe('Assignment 10', () =>{
         .click()
     })
 })
-describe.only('Assigment 11', () => {
+describe('Assigment 11', () => {
     ;['standard_user', 'locked_out_user', 'problem_user', 'performance_glitch_user']
     .forEach((user) => {
         it('Logs in as: ' + user, ()=>{
             cy.login(user, password)
         })
+    })
+})
+describe.only('Assigment 12', () => {
+    before(() => {
+        cy.login('standard_user', password)
+    })
+    beforeEach(() => {
+        cy.get('#item_4_title_link > .inventory_item_name')
+        .as('itemName')
+    })
+    it('Access the alias', () => {
+        cy.get('@itemName')
+        .click()
+        cy.url()
+        .should('includes', 'inventory-item')
     })
 })
