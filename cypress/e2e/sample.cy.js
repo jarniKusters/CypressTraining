@@ -203,3 +203,11 @@ describe.skip('Assignment 14', () =>{
 
     })
 })
+describe('Assigment 15', () => { //only runs the test in the browser that is opened
+    ;['electron', 'chrome', 'edge']
+    .forEach((internetBrowser) => {
+        it('Visits google with: ' + internetBrowser, {browser: internetBrowser}, () =>{
+            cy.visit('https://www.google.be')
+        })
+    })
+})
