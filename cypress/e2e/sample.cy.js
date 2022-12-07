@@ -158,7 +158,7 @@ describe('Assigment 11', () => {
         })
     })
 })
-describe.only('Assigment 12', () => {
+describe('Assigment 12', () => {
     before(() => {
         cy.login('standard_user', password)
     })
