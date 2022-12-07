@@ -71,7 +71,8 @@ describe('Assignment 5', () =>{
         cy.get(':nth-child(4) > .inventory_item_description')
         .contains('Fleece Jacket')
         cy.get(':nth-child(4) > .inventory_item_description')
-        .contains('49.99').and('be.visible')
+        .contains('49.99')
+        .and('be.visible')
         cy.get(':nth-child(4) > .inventory_item_description')
         .should('have.class', 'inventory_item_description')
     })
@@ -84,7 +85,9 @@ describe('Assignment 6', () =>{
         .should('have.value', 'standard_user')
         cy.get('[data-test="password"]')
         //yielding the element into val
-        .type('secret_sauce').invoke('val').then(val =>{
+        .type('secret_sauce')
+        .invoke('val')
+        .then(val =>{
             expect(val).to.equal('secret_sauce')
         })
     })
@@ -96,17 +99,34 @@ describe('Assignment 7', () =>{
 })
 
 describe('Assignment 8', () => {
-    before(() => {
+    beforeEach(() => {
         cy.login('standard_user', 'secret_sauce')
     })
-    it('test' , () => {
-        cy.get('#item_0_title_link > .inventory_item_name').click()
-        cy.get('button').contains('Add to cart').click()
-        cy.get('.shopping_cart_link').click()
-        cy.get('.cart_item').contains('Sauce Labs Bike Light')
+    afterEach(() => {
+        cy.get('#react-burger-menu-btn')
+        .click()
+        cy.get('#logout_sidebar_link')
+        .contains('Logout')
+        .click()
     })
-    after(() => {
-        cy.get('#react-burger-menu-btn').click()
-        cy.get('#logout_sidebar_link').contains('Logout').click()
+    it('Assigment 8A' , () => {
+        cy.get('#item_0_title_link > .inventory_item_name')
+        .click()
+        cy.get('button')
+        .contains('Add to cart')
+        .click()
+        cy.get('.shopping_cart_link')
+        .click()
+        cy.get('.cart_item')
+        .contains('Sauce Labs Bike Light')
     })
+    it('Assigment 8B' , () => {
+        cy.get(':nth-child(1) > .inventory_item_description')
+        .contains('Sauce Labs Backpack')
+        cy.get('.product_sort_container') 
+        .select('Name (Z to A)') //use .select to select the option
+        cy.get(':nth-child(1) > .inventory_item_description')
+        .should('not.contain', 'Sauce Labs Backpack')
+    })
+
 })
